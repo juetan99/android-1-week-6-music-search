@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Created by rjaylward on 2019-05-10
  */
-public interface SongItem  {
+public interface SongItem extends Parcelable {
 
     long getTrackId();
 

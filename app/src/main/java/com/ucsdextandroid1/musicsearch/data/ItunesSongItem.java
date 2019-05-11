@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by rjaylward on 2019-05-11
  */
-public class ItunesSongItem implements SongItem {
+public class ItunesSongItem implements SongItem, Parcelable {
 
     //TODO add all the members to this class with proper serialized names
     @SerializedName("trackId")
@@ -25,6 +25,44 @@ public class ItunesSongItem implements SongItem {
     private String previewUrl;
     @SerializedName("trackTimeMillis")
     private long trackTime;
+
+    protected ItunesSongItem(Parcel in) {
+        trackId = in.readLong();
+        trackName = in.readString();
+        artistName = in.readString();
+        albumName = in.readString();
+        artworkUrl = in.readString();
+        previewUrl = in.readString();
+        trackTime = in.readLong();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(trackId);
+        dest.writeString(trackName);
+        dest.writeString(artistName);
+        dest.writeString(albumName);
+        dest.writeString(artworkUrl);
+        dest.writeString(previewUrl);
+        dest.writeLong(trackTime);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<ItunesSongItem> CREATOR = new Creator<ItunesSongItem>() {
+        @Override
+        public ItunesSongItem createFromParcel(Parcel in) {
+            return new ItunesSongItem(in);
+        }
+
+        @Override
+        public ItunesSongItem[] newArray(int size) {
+            return new ItunesSongItem[size];
+        }
+    };
 
     @Override
     public long getTrackId() {
