@@ -19,7 +19,7 @@ public class ItunesSongItem implements SongItem, Parcelable {
     private String artistName;
     @SerializedName("collectionName")
     private String albumName;
-    @SerializedName("artistViewUrl")
+    @SerializedName("artworkUrl100")
     private String artworkUrl;
     @SerializedName("previewUrl")
     private String previewUrl;

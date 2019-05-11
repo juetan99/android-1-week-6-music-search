@@ -32,7 +32,7 @@ public class MusicDetailsActvity extends AppCompatActivity {
 
         if (songItem != null ){
             textView.setText(songItem.getAlbumName() + " " + songItem.getArtistName());
-            Picasso.get().load(.into(imageView);
+            Picasso.get().load(songItem.getArtworkUrl()).into(imageView);
         }
     }
 }
